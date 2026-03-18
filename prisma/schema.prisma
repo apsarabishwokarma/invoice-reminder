@@ -17,4 +17,47 @@ model User {
   email     String   @unique
   name      String?
   createdAt DateTime @default(now())
+
+  clients Client[]
+}
+
+model Client {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  phone     String?
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  invoices Invoice[]
+}
+
+model Invoice {
+  id          String        @id @default(uuid())
+  amount      Float
+  status      InvoiceStatus @default(PENDING)
+  dueDate     DateTime
+  issuedDate  DateTime      @default(now())
+  description String?
+  paidAt      DateTime      @default(now())
+  clientId    String
+  client      Client        @relation(fields: [clientId], references: [id])
+
+  reminders Reminder[]
+}
+
+model Reminder {
+  id        String   @id @default(uuid())
+  remindAt  DateTime
+  sent      Boolean  @default(false)
+  invoiceId String
+  invoice   Invoice  @relation(fields: [invoiceId], references: [id])
+}
+
+enum InvoiceStatus {
+  PENDING
+  PAID
+  OVERDUE
 }
