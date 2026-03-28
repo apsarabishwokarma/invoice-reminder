@@ -1,0 +1,56 @@
+@baseurl = http://localhost:3000
+
+### Main Route
+GET {{baseurl}}/
+
+### JSON
+POST {{baseurl}}/json
+Content-Type: application/json
+
+{
+  "name": "Apsara"
+}
+
+### Testing APIS
+GET {{baseurl}}/api/test
+
+### 
+GET {{baseurl}}/api/test/hello
+### 
+GET {{baseurl}}/api/test/html
+
+### 
+GET {{baseurl}}/api/test/file
+### 
+GET {{baseurl}}/api/test/users
+
+### 
+POST {{baseurl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "name" : "Apsara",
+  "email" :"apsara@gmail.com",
+  "password" : "apsara@123"
+}
+
+### 
+POST {{baseurl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email" :"apsara@gmail.com",
+  "password" : "apsara@123"
+}
+
+
+### 
+GET {{baseurl}}/api/auth/me
+
+### 
+PUT {{baseurl}}/api/auth/update
+Content-Type: application/json
+
+{
+  "name":"apsarajee"
+}
