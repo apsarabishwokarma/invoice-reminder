@@ -54,3 +54,38 @@ Content-Type: application/json
 {
   "name":"apsarajee"
 }
+
+
+
+@clientId = REPLACE_WITH_CLIENT_ID
+
+### Create Client
+# @name createClient
+POST {{baseurl}}/api/clients
+Content-Type: application/json
+
+{
+  "name": "Apsara Solutions",
+  "email": "apsara.client@gmail.com",
+  "phone": "+91-9876543210"
+}
+
+
+### List Clients
+GET {{baseurl}}/api/clients
+
+### Get Client By ID
+GET {{baseurl}}/api/clients/{{clientId}}
+
+### Update Client
+PUT {{baseurl}}/api/clients/{{clientId}}
+Content-Type: application/json
+
+{
+  "name": "Apsara Solutions Pvt Ltd",
+  "email": "accounts.apsara@gmail.com",
+  "phone": "+91-9876500000"
+}
+
+### Delete Client
+DELETE {{baseurl}}/api/clients/{{clientId}}
